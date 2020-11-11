@@ -26,5 +26,11 @@ class VendorTest < Minitest::Test
     item2 = Item.new({name: 'Tomato', price: '$0.50'})
 
     assert_equal 0, vendor.check_stock(item1)
+
+    vendor.stock(item1, 30)
+
+    expected = {item1 => 30}
+
+    assert_equal expected, vendor.inventory
   end
 end
