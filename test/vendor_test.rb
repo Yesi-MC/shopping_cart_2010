@@ -11,4 +11,12 @@ class VendorTest < Minitest::Test
     assert_instance_of Vendor, vendor
     assert_equal "Rocky Mountain Fresh", vendor.name
   end
+
+  def test_it_starts_with_no_inventory
+    vendor = Vendor.new("Rocky Mountain Fresh")
+
+    expected = {}
+
+    assert_equal expected, vendor.inventory
+  end
 end
