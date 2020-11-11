@@ -52,4 +52,12 @@ class Market
       end
       overstock
     end
+
+    def sorted_item_list
+      @vendors.map do |vendor|
+         vendor.inventory.map do |item, amount|
+           item.name
+         end
+       end.flatten.uniq.sort
+    end
   end
