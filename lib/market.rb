@@ -38,26 +38,26 @@ class Market
           inventory[item][:vendors] << vendor
         end
       end
-      inventory
-    end
+    inventory
+  end
 
-    def overstocked_items
-      overstock = []
-      @vendors.each do |vendor|
-        vendor.inventory.each do |item, amount|
-          if vendors_that_sell(item).count > 1 && amount > 50
-            overstock << item
-          end
+  def overstocked_items
+    overstock = []
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, amount|
+        if vendors_that_sell(item).count > 1 && amount > 50
+          overstock << item
         end
       end
-      overstock
     end
-
-    def sorted_item_list
-      @vendors.map do |vendor|
-         vendor.inventory.map do |item, amount|
-           item.name
-         end
-       end.flatten.uniq.sort
-    end
+    overstock
   end
+
+  def sorted_item_list
+    @vendors.map do |vendor|
+       vendor.inventory.map do |item, amount|
+         item.name
+       end
+     end.flatten.uniq.sort
+  end
+end
